@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account - EAU DE PLAY</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/public.css">
+  <link rel="stylesheet" href="css/cart.css">
+  <style id="account-critical-styles">
+    /* Critical fallback styles in case public.css didn't load */
+    .dashboard-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:18px}
+    .summary-card-large{display:flex;gap:14px;align-items:center;padding:18px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);box-shadow:0 10px 30px rgba(0,0,0,0.35);}
+    .summary-icon{width:56px;height:56px;border-radius:12px;display:grid;place-items:center;font-size:26px;background:linear-gradient(135deg,rgba(255,138,0,0.18),rgba(255,180,100,0.06))}
+    .summary-body{display:flex;flex-direction:column}
+    .summary-count{font-size:1.6rem;font-weight:700;margin-top:4px}
+    .account-grid{display:grid;grid-template-columns:1fr 360px;gap:20px}
+    .profile-box,.bookings-box,.purchases-box,.upcoming-services-box,.booking-info-box{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);padding:16px;border-radius:12px}
+    .booking-card{perspective:1200px;transform-style:preserve-3d;transition:transform 260ms ease,box-shadow 260ms ease;border-radius:12px;overflow:hidden}
+    .booking-card .card-inner{transition:transform 420ms cubic-bezier(.22,.9,.36,1);transform-style:preserve-3d;position:relative;box-shadow:0 8px 20px rgba(0,0,0,0.28);border-radius:12px;}
+    .booking-card .card-front,.booking-card .card-back{backface-visibility:hidden;position:relative;padding:12px;min-height:86px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01))}
+    .booking-card .card-back{position:absolute;inset:0;transform:rotateY(180deg)}
+    .booking-card.is-flipped .card-inner{transform:rotateY(180deg);box-shadow:0 30px 80px rgba(0,0,0,0.48)}
+    .booking-card:hover{transform:translateY(-6px) rotateX(3deg) rotateY(-4deg)}
+    @media (max-width: 680px) {
+      .dashboard-grid{grid-template-columns:1fr !important;gap:12px}
+      .account-grid{grid-template-columns:1fr !important;gap:12px}
+      .summary-card-large{flex-direction:row;gap:12px}
+      .summary-icon{width:48px;height:48px;font-size:20px}
+    }
+  </style>
+</head>
+<body>
+  <div class="account-page-shell">
+    <div id="navbar-placeholder"></div>
+    <!-- Full static navbar (matches components.createNavbar markup) -->
+    <nav id="fallback-navbar" class="navbar" aria-label="Main navigation">
+      <div class="navbar-container">
+        <div class="navbar-left">
+          <div class="navbar-brand">
+            <span class="brand-line">EAU DEY</span>
+            <span class="brand-line brand-play">PLAY</span>
+          </div>
+        </div>
+
+        <div class="navbar-center">
+          <ul class="navbar-nav desktop-nav">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="shop.html">SHOP</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="afro-pulse-27.html">AFRO PULSE</a></li>
+            <li><a href="gallery.html">GALLERY</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+          </ul>
+        </div>
+
+        <div class="navbar-right">
+          <a href="cart.html" class="cart-link">🛒 CART <span class="cart-count">0</span></a>
+          <a href="auth.html" class="auth-link">LOGIN / SIGNUP</a>
+          <a href="account.html" class="account-link">ACCOUNT</a>
+        </div>
+
+        <button class="navbar-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+      </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <div class="mobile-menu-panel">
+        <button class="mobile-menu-close" aria-label="Close navigation">✕</button>
+        <ul class="navbar-nav mobile-nav">
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="services.html">SERVICES</a></li>
+          <li><a href="shop.html">SHOP</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="afro-pulse-27.html">AFRO PULSE</a></li>
+          <li><a href="gallery.html">GALLERY</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+          <li><a href="cart.html" class="cart-link">🛒 CART <span class="cart-count">0</span></a></li>
+          <li><a href="auth.html" class="auth-link">LOGIN / SIGNUP</a></li>
+          <li><a href="account.html" class="account-link">ACCOUNT</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      // Minimal mobile toggle fallback in case components.js didn't run yet
+      (function(){
+        try {
+          const toggle = document.querySelector('.navbar-toggle');
+          const mobileMenu = document.getElementById('mobile-menu');
+          const closeBtn = document.querySelector('.mobile-menu-close');
+          if (toggle && mobileMenu) {
+            toggle.addEventListener('click', function(){
+              const open = mobileMenu.classList.toggle('open');
+              toggle.setAttribute('aria-expanded', String(open));
+            });
+          }
+          if (closeBtn && mobileMenu) {
+            closeBtn.addEventListener('click', function(){ mobileMenu.classList.remove('open'); if (toggle) toggle.setAttribute('aria-expanded','false'); });
+          }
+          if (mobileMenu) {
+            mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mobileMenu.classList.remove('open'); if (toggle) toggle.setAttribute('aria-expanded','false'); }));
+          }
+        } catch (e) { /* ignore */ }
+      })();
+
+      // Auto-remove the fallback navbar once the dynamic injector runs
+      (function(){
+        function removeFallbackIfInjected() {
+          try {
+            const body = document.body;
+            const injected = body && body.dataset && body.dataset.navInjected === 'true';
+            const fallback = document.getElementById('fallback-navbar');
+            if (injected && fallback) {
+              fallback.remove();
+              const mobile = document.getElementById('mobile-menu');
+              if (mobile) mobile.remove();
+            }
+            return injected;
+          } catch (e) { return false; }
+        }
+
+        if (!removeFallbackIfInjected()) {
+          // observe body attribute changes
+          const observer = new MutationObserver((mutations) => {
+            for (const m of mutations) {
+              if (m.type === 'attributes' && m.attributeName === 'data-nav-injected') {
+                if (removeFallbackIfInjected()) observer.disconnect();
+              }
+            }
+          });
+          try { observer.observe(document.body, { attributes: true }); } catch (e) { /* ignore */ }
+
+          // final timeout: try removing after 3s in case attribute isn't set
+          setTimeout(() => removeFallbackIfInjected(), 3000);
+        }
+      })();
+    </script>
+
+    <section class="account-section">
+      <div class="account-container">
+        <h2>My Account</h2>
+
+        <div class="dashboard-summary">
+          <div class="dashboard-grid">
+            <div class="summary-card summary-card-large" id="card-bookings">
+              <div class="summary-icon">📅</div>
+              <div class="summary-body">
+                <div class="summary-label">Bookings</div>
+                <div class="summary-count" id="summary-bookings-count">0</div>
+                <div class="summary-desc">Total bookings made</div>
+              </div>
+            </div>
+
+            <div class="summary-card summary-card-large" id="card-upcoming">
+              <div class="summary-icon">⏰</div>
+              <div class="summary-body">
+                <div class="summary-label">Upcoming</div>
+                <div class="summary-count" id="summary-upcoming-count">0</div>
+                <div class="summary-desc">Scheduled services</div>
+              </div>
+            </div>
+
+            <div class="summary-card summary-card-large" id="card-purchases">
+              <div class="summary-icon">🛍️</div>
+              <div class="summary-body">
+                <div class="summary-label">Purchases</div>
+                <div class="summary-count" id="summary-purchases-count">0</div>
+                <div class="summary-desc">Items purchased</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="account-grid">
+          <div class="account-left">
+            <div class="profile-box">
+              <h3>Profile</h3>
+              <p id="profile-email">Loading your account…</p>
+              <div class="avatar-box">
+                <div id="avatar-preview" class="avatar-preview"></div>
+                <div class="avatar-builder-controls">
+                  <div class="avatar-builder-row">
+                    <label for="avatar-size">Size</label>
+                    <select id="avatar-size">
+                      <option value="small">Small</option>
+                      <option value="medium" selected>Medium</option>
+                      <option value="large">Large</option>
+                    </select>
+                  </div>
+                  <div class="avatar-builder-row">
+                    <label for="avatar-height">Height</label>
+                    <select id="avatar-height">
+                      <option value="short">Short</option>
+                      <option value="average" selected>Average</option>
+                      <option value="tall">Tall</option>
+                      <option value="giant">Giant</option>
+                    </select>
+                  </div>
+                  <div class="avatar-builder-row">
+                    <label for="avatar-skin">Skin</label>
+                    <select id="avatar-skin">
+                      <option value="#ffdbb4">Porcelain</option>
+                      <option value="#ffcc99">Light</option>
+                      <option value="#f0b486">Fair</option>
+                      <option value="#d69f77" selected>Tan</option>
+                      <option value="#a56b46">Olive</option>
+                      <option value="#8b5a2b">Deep</option>
+                      <option value="#5a3826">Ebony</option>
+                    </select>
+                  </div>
+                  <div class="avatar-builder-row">
+                    <label for="avatar-hair">Hair</label>
+                    <select id="avatar-hair">
+                      <option value="#111111">Black</option>
+                      <option value="#2c2c2c">Jet Black</option>
+                      <option value="#66442e">Brown</option>
+                      <option value="#a35a2c">Chestnut</option>
+                      <option value="#f4d35e" selected>Blonde</option>
+                      <option value="#c97f36">Copper</option>
+                      <option value="#cfcfcf">Silver</option>
+                    </select>
+                  </div>
+                  <div class="avatar-builder-row">
+                    <label for="avatar-hairstyle">Hair style</label>
+                    <select id="avatar-hairstyle">
+                      <option value="curly" selected>Curly</option>
+                      <option value="bangs">Bangs</option>
+                      <option value="spiky">Spiky</option>
+                      <option value="afro">Afro</option>
+                      <option value="ponytail">Ponytail</option>
+                      <option value="buzz">Buzz Cut</option>
+                    </select>
+                  </div>
+                  <div class="avatar-builder-row">
+                    <label for="avatar-outfit">Outfit</label>
+                    <select id="avatar-outfit">
+                      <option value="#70d6ff" selected>Electric Blue</option>
+                      <option value="#82d173">Neon Green</option>
+                      <option value="#ff8a00">Sunset Orange</option>
+                      <option value="#c56cff">Violet Glow</option>
+                      <option value="#ffffff">Classic White</option>
+                      <option value="#000000">Midnight Black</option>
+                    </select>
+                  </div>
+                  <div class="avatar-builder-row">
+                    <label for="avatar-pattern">Outfit Pattern</label>
+                    <select id="avatar-pattern">
+                      <option value="none" selected>None</option>
+                      <option value="stripes">Stripes</option>
+                      <option value="dots">Dots</option>
+                      <option value="gradient">Gradient</option>
+                      <option value="chevron">Chevron</option>
+                    </select>
+                  </div>
+                  <div class="avatar-builder-row">
+                    <label for="avatar-makeup">Makeup</label>
+                    <select id="avatar-makeup">
+                      <option value="none" selected>None</option>
+                      <option value="glow">Glow</option>
+                      <option value="smokey">Smokey Eyes</option>
+                      <option value="bold">Bold Lips</option>
+                    </select>
+                  </div>
+                  <div class="avatar-builder-row">
+                    <label for="avatar-tattoo">Tattoo</label>
+                    <select id="avatar-tattoo">
+                      <option value="none" selected>None</option>
+                      <option value="star">Star</option>
+                      <option value="music">Music Note</option>
+                      <option value="tribal">Tribal</option>
+                    </select>
+                  </div>
+                  <div class="avatar-builder-row">
+                    <label for="avatar-accessory">Accessory</label>
+                    <select id="avatar-accessory">
+                      <option value="none" selected>None</option>
+                      <option value="sunglasses">Sunglasses</option>
+                      <option value="earring">Earring</option>
+                      <option value="hat">Hat</option>
+                      <option value="mask">Mask</option>
+                      <option value="necklace">Necklace</option>
+                      <option value="scarf">Scarf</option>
+                      <option value="headphones">Headphones</option>
+                      <option value="chain">Chain</option>
+                    </select>
+                  </div>
+                </div>
+                <button id="avatar-create-btn" type="button" class="btn btn-glow">Create avatar</button>
+                <p class="avatar-note">Design your club avatar here. No uploads allowed — your avatar is generated and saved for every visit.</p>
+              </div>
+              <button id="signout-btn" class="btn">Sign Out</button>
+            </div>
+
+            <div class="bookings-box">
+              <h3>My Bookings</h3>
+              <div id="bookings-list">
+                <p>Loading your bookings…</p>
+              </div>
+            </div>
+
+            <div class="purchases-box">
+              <h3>My Purchases</h3>
+              <div id="purchases-list">
+                <p>Loading your purchases…</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="account-right">
+            <div class="avatar-side-box">
+              <h3>Your Avatar</h3>
+              <div id="avatar-preview-side" class="avatar-preview-side"></div>
+              <p class="small-text">Preview of the avatar used in the club. Create or update on the left.</p>
+            </div>
+            <div class="upcoming-services-box">
+              <h3>Upcoming Services</h3>
+              <div id="upcoming-services">
+                <p>No upcoming services scheduled.</p>
+              </div>
+            </div>
+
+            <div class="booking-info-box">
+              <h3>Booking Information</h3>
+              <div id="booking-info">
+                <p>Select a booking to view details.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+  </div>
+
+      <!-- Order Detail Modal -->
+      <div id="order-modal" class="modal" aria-hidden="true">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 id="modal-title">Order Details</h3>
+            <button class="modal-close" id="modal-close">✕</button>
+          </div>
+          <div class="modal-body" id="modal-body">
+            <!-- details inserted here -->
+          </div>
+        </div>
+      </div>
+
+        <script type="module">
+          (async function(){
+            function ensureCss(href){
+              return new Promise((resolve) => {
+                try {
+                  const links = Array.from(document.getElementsByTagName('link'));
+                  let found = links.find(l => l.href && l.href.indexOf(href) !== -1);
+                  if (!found) {
+                    found = document.createElement('link');
+                    found.rel = 'stylesheet';
+                    found.href = href;
+                    found.onload = () => resolve(true);
+                    found.onerror = () => resolve(false);
+                    document.head.appendChild(found);
+                    // small timeout fallback
+                    setTimeout(() => { if (!found.sheet) resolve(true); }, 1500);
+                  } else {
+                    if (found.sheet) return resolve(true);
+                    found.addEventListener('load', () => resolve(true));
+                    found.addEventListener('error', () => resolve(false));
+                    setTimeout(() => { resolve(true); }, 800);
+                  }
+                } catch (e) { resolve(false); }
+              });
+            }
+
+            function showDiag(msg) {
+              let el = document.getElementById('account-diag');
+              if (!el) {
+                el = document.createElement('div');
+                el.id = 'account-diag';
+                el.style.position = 'fixed';
+                el.style.right = '16px';
+                el.style.bottom = '16px';
+                el.style.background = 'rgba(0,0,0,0.6)';
+                el.style.color = '#fff';
+                el.style.padding = '8px 12px';
+                el.style.borderRadius = '8px';
+                el.style.zIndex = '99999';
+                document.body.appendChild(el);
+              }
+              el.textContent = msg;
+            }
+
+            const cssOk = await ensureCss('css/public.css');
+            if (!cssOk) {
+              console.warn('Failed to load css/public.css');
+              showDiag('Warning: public.css failed to load. Some visuals may be degraded.');
+            }
+
+            try {
+              await import('./js/public-app.js');
+            } catch (err) {
+              console.error('public-app failed to load', err);
+              showDiag('Error: public-app failed to load (see console)');
+            }
+
+            try {
+              await import('./js/account.js');
+            } catch (err) {
+              console.error('account.js failed to load', err);
+              showDiag('Error: account module failed to load (see console)');
+              const list = document.getElementById('bookings-list');
+              const purchases = document.getElementById('purchases-list');
+              const upcoming = document.getElementById('upcoming-services');
+              if (list) list.innerHTML = '<p class="error">Account UI failed to load. Check console for errors.</p>';
+              if (purchases) purchases.innerHTML = '<p class="error">Account UI failed to load. Check console for errors.</p>';
+              if (upcoming) upcoming.innerHTML = '<p class="error">Account UI failed to load. Check console for errors.</p>';
+            }
+          })();
+        </script>
+</body>
+</html>

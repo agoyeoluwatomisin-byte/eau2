@@ -1,0 +1,79 @@
+/* ============================================
+   CSS VARIABLES - Colors, Fonts, Spacing
+   ============================================ */
+
+:root {
+  /* PRIMARY COLORS */
+  --color-primary: #ff8a00;
+  --color-primary-light: #ffc16a;
+  --color-background: #090712;
+  --color-background-light: #13101a;
+  --color-surface: rgba(255,255,255,0.04);
+  --color-surface-strong: rgba(255,255,255,0.08);
+  --color-text: #f4f3f8;
+  --color-text-light: #d8d6e0;
+  --color-text-muted: #a8a4b3;
+  --color-accent: #ffb347;
+  --color-border: rgba(255,255,255,0.08);
+  --color-success: #14e45b;
+  --color-error: #ff4f5a;
+  --color-warning: #ffc150;
+  --color-info: #7bd4ff;
+
+  /* TYPOGRAPHY */
+  --font-weight-black: 900;
+  --font-serif: 'Georgia', 'Garamond', serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+
+  /* FONT SIZES */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.5rem;
+  --font-size-4xl: 3rem;
+
+  /* FONT WEIGHTS */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* SPACING */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+
+  /* BORDER RADIUS */
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-full: 9999px;
+
+  /* TRANSITIONS */
+  --transition-fast: 0.15s ease-in-out;
+  --transition-base: 0.3s ease-in-out;
+  --transition-slow: 0.5s ease-in-out;
+
+  /* SHADOWS */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.2);
+
+  /* Z-INDEX */
+  --z-index-dropdown: 100;
+  --z-index-sticky: 200;
+  --z-index-fixed: 300;
+  --z-index-modal-backdrop: 400;
+  --z-index-modal: 500;
+  --z-index-popover: 600;
+  --z-index-tooltip: 700;
+}

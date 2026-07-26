@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/assets/images/EAUDEYPLAYLOGO.png" type="image/png">
+  <link rel="shortcut icon" href="/assets/images/EAUDEYPLAYLOGO.png" type="image/png">
+  <title>EAU DE PLAY - Unlock Success with a Splash of Fun</title>
+
+  <!-- CSS Links -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/public.css">
+  <!-- Redesign layer: restyles the above, load last -->
+  <link rel="stylesheet" href="css/theme-redesign.css">
+  <meta name="google-site-verification" content="-c4Z8QDJB78e2IX30DcG9vcNxZ_YTQlSFcav4Q9sh0g" />
+</head>
+<body>
+  <script>
+    if (sessionStorage.getItem('skipPreloader') === 'true') {
+      document.documentElement.classList.add('skip-preloader');
+      sessionStorage.removeItem('skipPreloader');
+    }
+  </script>
+
+  <div class="page-preloader" id="page-preloader" aria-hidden="true">
+    <div class="preloader-content">
+      <div class="preloader-badge">EAU DE PLAY</div>
+      <div class="preloader-title">Unlocking your next great experience</div>
+      <div class="preloader-strip" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <!-- Navbar Placeholder -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- AFRO PULSE Hero Banner -->
+  <section class="afro-home-banner">
+    <div class="afro-banner-inner" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('assets/images/IMG_1427.JPG'); background-size:cover; background-position:center;">
+      <div class="container afro-home-banner-content">
+        <span class="eyebrow">EAU DE PLAY PRESENTS</span>
+        <h2>AFRO<br>PULSE '27</h2>
+        <p>Every edition set to spark up summer seasons in Iceland. Join our community to stay updated on newsletters and reserve your tickets for AFRO PULSE '27.</p>
+        <div class="hero-cta-group">
+          <a href="afro-pulse-27.html" class="btn btn-large">Coming Soon</a>
+          <a href="afro-pulse-27.html#newsletter-section" class="btn btn-secondary">Join Newsletter</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="silent-disco-banner">
+    <div class="container">
+      <span class="eyebrow">Coming To Reykjavík</span>
+      <h2>Link It Up</h2>
+      <p>An immersive silent disco night — wireless headsets, three live channels, one glowing dancefloor.</p>
+      <a href="silent-disco.html" class="btn btn-secondary">Coming Soon</a>
+    </div>
+  </section>
+
+  <!-- More Than An Event -->
+  <section class="silent-disco-banner">
+    <div class="container">
+      <span class="eyebrow">Coming To Reykjavík</span>
+      <h2>Link It Up</h2>
+      <p>An immersive silent disco night — wireless headsets, three live channels, one glowing dancefloor.</p>
+      <a href="silent-disco.html" class="btn btn-secondary">Coming Soon</a>
+    </div>
+  </section>
+
+  <!-- More Than An Event -->
+  <section class="movement-section">
+    <div class="movement-grid">
+      <div class="movement-text">
+        <span class="eyebrow">We Are Eau De Play</span>
+        <h2>More Than<br>An Event.<br>It's A Movement.</h2>
+        <p>Eau De Play Inc. is a creative platform curating unforgettable experiences that celebrate African culture, music and community — right here in Iceland and beyond.</p>
+        <a href="about.html" class="btn btn-secondary">Learn More</a>
+      </div>
+      <div class="movement-frame" id="movement-frame" role="button" tabindex="0" aria-label="Click to see more photos">
+        <img src="assets/images/IMG_1521.JPG" alt="Crowd at an Eau De Play event" id="movement-frame-img">
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      var gallery = [
+        'assets/images/IMG_1521.JPG',
+        'assets/images/IMG_1427.JPG',
+        'assets/images/IMG_1599.JPG',
+        'assets/images/IMG_1632.JPG',
+        'assets/images/IMG_0971.JPG',
+        'assets/images/IMG_1027.JPG',
+        'assets/images/IMG_1081.JPG'
+      ];
+      var frame = document.getElementById('movement-frame');
+      var img = document.getElementById('movement-frame-img');
+      if (!frame || !img) return;
+      var index = 0;
+
+      function nextImage() {
+        index = (index + 1) % gallery.length;
+        img.classList.add('is-swapping');
+        window.setTimeout(function () {
+          img.src = gallery[index];
+          img.classList.remove('is-swapping');
+        }, 180);
+      }
+
+      frame.addEventListener('click', nextImage);
+      frame.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); nextImage(); }
+      });
+    })();
+  </script>
+
+  <!-- What's Next -->
+  <section class="events-next-section">
+    <div class="events-next-header">
+      <span class="eyebrow">Upcoming Events</span>
+      <h2>What's Next</h2>
+    </div>
+    <div class="events-next-grid">
+      <article class="event-card">
+        <div class="event-card-image">
+          <span class="event-card-tag">Summer '27</span>
+          <img src="assets/images/IMG_1427.JPG" alt="AFRO PULSE '27">
+        </div>
+        <div class="event-card-body">
+          <h3>Afro Pulse '27</h3>
+          <div class="event-card-meta">
+            <span>June 2027</span>
+            <span>Reykjavík, Iceland</span>
+          </div>
+          <a href="afro-pulse-27.html" class="btn btn-secondary">Coming Soon</a>
+        </div>
+      </article>
+
+      <article class="event-card">
+        <div class="event-card-image">
+          <span class="event-card-tag">Silent Disco</span>
+          <img src="assets/images/SILENTDISCO-1.jpg" alt="link it up silent disco">
+        </div>
+        <div class="event-card-body">
+          <h3>Silent Disco</h3>
+          <div class="event-card-meta">
+            <span>December 2026</span>
+            <span>Reykjavík, Iceland</span>
+          </div>
+          <a href="services.html" class="btn btn-secondary">View Details</a>
+        </div>
+      </article>
+
+      <article class="event-card">
+        <div class="event-card-image">
+          <span class="event-card-tag">Spring '26</span>
+          <img src="assets/images/IMG_1632.JPG" alt="Culture Wave">
+        </div>
+        <div class="event-card-body">
+          <h3>Culture Wave</h3>
+          <div class="event-card-meta">
+            <span>April 2026</span>
+            <span>Reykjavík, Iceland</span>
+          </div>
+          <a href="services.html" class="btn btn-secondary">View Details</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- On Our Instagram -->
+  <section class="instagram-section">
+    <span class="eyebrow">The Energy</span>
+    <h2>On Our Instagram</h2>
+    <div class="instagram-grid">
+      <a href="https://instagram.com" target="_blank" rel="noopener"><img src="assets/images/IMG_0971.JPG" alt="Instagram post"></a>
+      <a href="https://instagram.com" target="_blank" rel="noopener"><img src="assets/images/IMG_1027.JPG" alt="Instagram post"></a>
+      <a href="https://instagram.com" target="_blank" rel="noopener"><img src="assets/images/IMG_1081.JPG" alt="Instagram post"></a>
+      <a href="https://instagram.com" target="_blank" rel="noopener"><img src="assets/images/IMG_1953.JPG" alt="Instagram post"></a>
+      <a href="https://instagram.com" target="_blank" rel="noopener"><img src="assets/images/IMG_2060.JPG" alt="Instagram post"></a>
+      <a href="https://instagram.com" target="_blank" rel="noopener"><img src="assets/images/IMG_2128.JPG" alt="Instagram post"></a>
+    </div>
+    <a href="https://instagram.com" target="_blank" rel="noopener" class="btn btn-secondary" style="margin-top:2rem;">Follow @eaudeyplay</a>
+  </section>
+
+  <!-- About Teaser -->
+  <section class="about-teaser">
+    <div class="about-teaser-content">
+      <h2>Get to Know Us</h2>
+      <p>EAU DE PLAY is a dynamic team of skilled creatives dedicated to transforming your vision into reality. From event planning to professional photography, we bring excellence to every project.</p>
+      <a href="about.html" class="btn btn-secondary">LEARN MORE</a>
+    </div>
+  </section>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script>
+    (function(){
+      try {
+        var el = document.querySelector('.afro-home-banner-content');
+        window.__AFRO_ORIGINAL_AFRO_BANNER = el ? el.innerHTML : '';
+      } catch (e) {
+        window.__AFRO_ORIGINAL_AFRO_BANNER = '';
+      }
+    })();
+  </script>
+  <script>
+    (function(){
+      function removeExtraAfro() {
+        try {
+          const banners = document.querySelectorAll('.afro-home-banner');
+          if (banners && banners.length > 1) {
+            for (let i = 1; i < banners.length; i++) {
+              banners[i].remove();
+            }
+          }
+        } catch (e) {}
+      }
+      removeExtraAfro();
+      try {
+        const mo = new MutationObserver(() => removeExtraAfro());
+        mo.observe(document.body, { childList: true, subtree: true });
+        setTimeout(() => mo.disconnect(), 6000);
+      } catch (e) {}
+    })();
+  </script>
+  <script>
+    window.addEventListener('load', function () {
+      const preloader = document.getElementById('page-preloader');
+      if (!preloader) return;
+      preloader.classList.add('page-preloader-hidden');
+      window.setTimeout(function () {
+        preloader.remove();
+      }, 500);
+    });
+  </script>
+  <script type="module" src="js/public-app.js"></script>
+</body>
+</html>

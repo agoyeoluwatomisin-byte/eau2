@@ -1,0 +1,101 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Premium DJ Services",
+      "category": "service",
+      "price": 500,
+      "description": "Professional DJ services for events",
+      "image": "assets/images/IMG_3347.jpg",
+      "buttonText": "BOOK"
+    },
+    {
+      "id": 2,
+      "name": "Photography & Videography",
+      "category": "service",
+      "price": 500,
+      "description": "Professional photography and videography packages",
+      "image": "assets/images/IMG-20260713-WA0009.jpg",
+      "buttonText": "BOOK"
+    },
+    {
+      "id": 3,
+      "name": "Event Planning",
+      "category": "service",
+      "price": 12000,
+      "description": "Complete event planning and coordination",
+      "image": "assets/images/IMG_4703.jpg",
+      "buttonText": "BOOK"
+    },
+    {
+      "id": 4,
+      "name": "Sports Solutions",
+      "category": "service",
+      "price": 500,
+      "description": "Sports event management and coverage",
+      "image": "assets/images/IMG-20260713-WA0008.jpg",
+      "buttonText": "BOOK"
+    }
+  ],
+  "settings": [
+    {
+      "id": "afro-pulse",
+      "title": "AFRO PULSE '27",
+      "subtitle": "Every edition set to spark up summer seasons in Iceland. Sign up for the next experience, join our community to stay updated on newsletters and reserve your tickets for AFRO PULSE '27.",
+      "ticketUrl": "",
+      "ticketButtonText": "Get Tickets",
+      "newsletterEndpoint": "/api/newsletter",
+      "newsletterConfirmation": "Thanks for subscribing! We’ll keep you updated.",
+      "galleryImages": [
+        {
+          "id": "img-1",
+          "src": "assets/images/IMG_1566.JPG"
+        },
+        {
+          "id": "img-2",
+          "src": "assets/images/IMG_1521.JPG"
+        },
+        {
+          "id": "img-3",
+          "src": "assets/images/IMG_1427.JPG"
+        },
+        {
+          "id": "img-4",
+          "src": "assets/images/IMG_1081.JPG"
+        },
+        {
+          "id": "img-5",
+          "src": "assets/images/IMG_1027.JPG"
+        },
+        {
+          "id": "img-6",
+          "src": "assets/images/IMG_0971.JPG"
+        },
+        {
+          "id": "img-7",
+          "src": "assets/images/IMG_2128.JPG"
+        },
+        {
+          "id": "img-8",
+          "src": "assets/images/IMG_2060.JPG"
+        }
+      ],
+      "galleryVideos": []
+    }
+  ],
+  "bookings": [
+    {
+      "id": "bk-local-1",
+      "serviceId": 1,
+      "serviceName": "Premium DJ Services",
+      "where": "Reykjavik",
+      "start": "2026-08-01T18:00:00Z",
+      "total": 500,
+      "payment": {
+        "method": "paypal",
+        "status": "pending"
+      },
+      "createdAt": "2026-07-10T12:00:00Z"
+    }
+  ]
+}

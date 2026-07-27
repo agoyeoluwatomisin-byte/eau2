@@ -24,8 +24,8 @@ export function createNavbar() {
     <nav class="navbar">
       <div class="navbar-container">
         <div class="navbar-left">
-          <a href="index.html" class="navbar-brand" aria-label="EAU DEY PLAY home">
-            <img src="${logoSrc}" alt="EAU DE PLAY logo" class="brand-logo">
+          <a href="index.html" class="navbar-brand" aria-label="EAU DE PLAY home">
+            <img src="${logoSrc}" alt="EAU DEY PLAY logo" class="brand-logo">
           </a>
         </div>
 

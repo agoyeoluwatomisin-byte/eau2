@@ -779,6 +779,12 @@ button, .btn {
    instead of a clean dark background. This guarantees it's always dark. */
 .silent-disco-banner {
   background-color: var(--color-background-light);
+    background: linear-gradient(180deg, rgba(7,8,20,0.72), rgba(7,8,20,0.72)),
+             url("../assets/images/SILENTDISCO-1.jpg" !important);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+ 
 }
 
 /* ---------- fix: homepage body background was gold, not black ---------- */

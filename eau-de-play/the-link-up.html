@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE LINK UP - EAU DE PLAY</title>
+  <meta name="description" content="THE LINK UP is a social music party by EAU DE PLAY on September 5 in Reykjavík." />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/public.css" />
+  <style>
+    body {
+      background: #080912;
+    }
+
+    .linkup-page {
+      background:
+        radial-gradient(circle at top left, rgba(255, 125, 26, 0.22), transparent 20%),
+        radial-gradient(circle at bottom right, rgba(66, 144, 255, 0.18), transparent 25%),
+        linear-gradient(180deg, #06070d 0%, #0b0d18 35%, #0e1118 100%);
+      color: #f5f7fb;
+    }
+
+    .linkup-hero {
+      position: relative;
+      padding: 140px 0 80px;
+      overflow: hidden;
+      min-height: 680px;
+      display: flex;
+      align-items: center;
+    }
+
+    .linkup-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(5, 6, 12, 0.88) 0%, rgba(5, 6, 12, 0.52) 38%, rgba(5, 6, 12, 0.82) 100%),
+        url('assets/images/IMG-20260727-WA0014.jpg') center/cover no-repeat;
+      opacity: 0.9;
+    }
+
+    .linkup-hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 180px;
+      background: linear-gradient(180deg, rgba(6, 7, 13, 0) 0%, rgba(6, 7, 13, 0.95) 100%);
+    }
+
+    .linkup-hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .linkup-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      border-radius: 999px;
+      color: #f6d9b9;
+    }
+
+    .linkup-title {
+      font-size: clamp(3.2rem, 7vw, 7rem);
+      line-height: 0.95;
+      color: #ffffff;
+      margin: 22px 0 20px;
+      text-transform: uppercase;
+      letter-spacing: -0.06em;
+    }
+
+    .linkup-subtitle {
+      color: rgba(255,255,255,0.8);
+      font-size: 1.12rem;
+      max-width: 650px;
+      line-height: 1.8;
+    }
+
+    .linkup-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+      margin-bottom: 32px;
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #f4f7ff;
+      font-weight: 600;
+    }
+
+    .linkup-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      margin-top: 18px;
+    }
+
+    .btn-large {
+      padding: 18px 28px;
+      font-size: 1rem;
+    }
+
+    .ticket-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(12, 16, 27, 0.82), rgba(15, 18, 28, 0.94));
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(14px);
+    }
+
+    .ticket-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, rgba(255,154,72,0.5), rgba(61, 121, 255, 0.26), rgba(255,255,255,0));
+      z-index: -1;
+      opacity: 0.8;
+    }
+
+    .ticket-card-tag {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 149, 72, 0.12);
+      border: 1px solid rgba(255, 149, 72, 0.24);
+      color: #ffd2a0;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .ticket-card h3 {
+      margin-bottom: 16px;
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      color: #ffffff;
+    }
+
+    .ticket-card p {
+      color: rgba(255,255,255,0.78);
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .ticket-link-box {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px dashed rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+    }
+
+    .ticket-link-box strong {
+      color: #ffffff;
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .section-wrap {
+      padding: 90px 0 30px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
+      gap: 28px;
+      margin-top: 34px;
+    }
+
+    .info-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 28px 22px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.14);
+    }
+
+    .info-card .eyebrow {
+      margin-bottom: 18px;
+      letter-spacing: 0.12em;
+      font-size: 0.68rem;
+    }
+
+    .info-card h3 {
+      margin-bottom: 10px;
+      color: #ffffff;
+      font-size: 1.5rem;
+    }
+
+    .info-card p {
+      margin-bottom: 0;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.8;
+    }
+
+    .event-schedule {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .schedule-box,
+    .ticket-box {
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 26px;
+      padding: 32px 28px;
+    }
+
+    .schedule-box h3,
+    .ticket-box h3 {
+      color: #ffffff;
+      margin-bottom: 22px;
+    }
+
+    .schedule-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .schedule-list-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.8);
+    }
+
+    .schedule-list-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .schedule-list-item strong {
+      color: #ffffff;
+    }
+
+    .ticket-box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .ticket-box .price {
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      font-weight: 800;
+      color: #ffb266;
+      line-height: 1;
+      margin: 10px 0 18px;
+    }
+
+    .ticket-box p {
+      color: rgba(255,255,255,0.74);
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+
+    .ticket-box .btn {
+      width: fit-content;
+    }
+
+    .gallery-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 34px;
+    }
+
+    .gallery-strip img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+    }
+
+    @media (max-width: 980px) {
+      .linkup-grid,
+      .event-schedule,
+      .info-grid,
+      .gallery-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .linkup-hero {
+        padding-top: 120px;
+      }
+    }
+  </style>
+</head>
+<body class="linkup-page">
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <section class="linkup-hero">
+      <div class="container">
+        <div class="linkup-grid">
+          <div>
+            <span class="eyebrow">EAU DE PLAY PRESENTS</span>
+            <h1 class="linkup-title">THE LINK UP</h1>
+            <p class="linkup-subtitle">
+              A vibrant night of music, energy and connection designed for the city after dark. Join us on Saturday, September 5 for a high-vibe party built for unforgettable memories in Reykjavík.
+            </p>
+
+            <div class="linkup-meta">
+              <span class="meta-pill">September 5</span>
+              <span class="meta-pill">Old Harbor, Reykjavík</span>
+              <span class="meta-pill">7:00 PM - 11:00 PM</span>
+            </div>
+
+            <div class="linkup-cta">
+              <a href="#tickets" class="btn btn-large">Get Tickets</a>
+              <a href="#details" class="btn btn-secondary btn-large">See Details</a>
+            </div>
+          </div>
+
+          <aside class="ticket-card" aria-label="Ticket purchase card">
+            <span class="ticket-card-tag">Limited access</span>
+            <h3>Party Night</h3>
+            <p>Live sounds, stylish energy, warm vibes and a room built for connecting.</p>
+            <div class="ticket-link-box">
+              <strong>Ticket Link</strong>
+              https://tix.is/en/event/22118%2Fthe-link-up
+            </div>
+            <div class="linkup-cta" style="margin-top: 20px;">
+              <a href="https://tix.is/en/event/22118%2Fthe-link-up" target="_blank" rel="noopener" class="btn btn-large">Book Now</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="details" class="section-wrap">
+      <div class="container">
+        <span class="eyebrow">The Experience</span>
+        <h2>More than a party. It’s a connection.</h2>
+
+        <div class="info-grid">
+          <article class="info-card">
+            <span class="eyebrow">Music</span>
+            <h3>Curated energy</h3>
+            <p>Expect a seamless blend of upbeat sets, movement, and the kind of atmosphere that keeps everyone in the moment.</p>
+          </article>
+
+          <article class="info-card">
+            <span class="eyebrow">People</span>
+            <h3>Good energy</h3>
+            <p>Built for conversations, laughter, dancing, and the feeling of finding your people in the room.</p>
+          </article>
+
+          <article class="info-card">
+            <span class="eyebrow">Space</span>
+            <h3>Night pulse</h3>
+            <p>From the first beat to the final hour, the room is designed to feel immersive, alive and unforgettable.</p>
+          </article>
+        </div>
+
+        <div class="event-schedule">
+          <div class="schedule-box">
+            <h3>Event Schedule</h3>
+            <div class="schedule-list">
+              <div class="schedule-list-item">
+                <span><strong>Event Starts</strong></span>
+                <span>7:00 PM</span>
+              </div>
+              <div class="schedule-list-item">
+                <span><strong>Live Set</strong></span>
+                <span>8:00 PM</span>
+              </div>
+              <div class="schedule-list-item">
+                <span><strong>Peak Energy</strong></span>
+                <span>9:00 PM - 10:30 PM</span>
+              </div>
+              <div class="schedule-list-item">
+                <span><strong>Event Ends</strong></span>
+                <span>11:00 PM</span>
+              </div>
+            </div>
+          </div>
+
+          <div id="tickets" class="ticket-box">
+            <span class="eyebrow">Tickets</span>
+            <h3>Reserve your place</h3>
+            <div class="price">From 5,000 ISK</div>
+            <p>Old Harbor, Reykjavík — limited spots available. Grab your pass and be part of a night designed for music, culture, and memorable experiences.</p>
+            <a href="https://tix.is/en/event/22118%2Fthe-link-up" target="_blank" rel="noopener" class="btn btn-large">Get Tickets</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-wrap" style="padding-top: 30px; padding-bottom: 120px;">
+      <div class="container">
+        <span class="eyebrow">Gallery</span>
+        <h2>Feel the vibe</h2>
+        <div class="gallery-strip">
+          <img src="assets/images/IMG_0971.JPG" alt="People at an EAU DE PLAY night" />
+          <img src="assets/images/IMG_1027.JPG" alt="Vibrant event energy" />
+          <img src="assets/images/IMG_1081.JPG" alt="Night scene from EAU DE PLAY" />
+          <img src="assets/images/IMG_1521.JPG" alt="Crowd enjoying the energy" />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script type="module" src="js/public-app.js"></script>
+</body>
+</html>
